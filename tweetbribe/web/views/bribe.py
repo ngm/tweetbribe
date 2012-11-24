@@ -35,7 +35,8 @@ def create_bribe(request):
         bribe.message = request.POST.get('bribe_message')
 
         bribe.save()
-        return render_to_response('bribe/success.html', {})
+        bribe_url = '%s%s' % ('http://localhost:8080/bribe/view/', bribe.id)
+        return render_to_response('bribe/success.html', {'bribe':bribe, 'bribe_url':bribe_url})
 
     charities = Charity.objects.all()
     c = Context({
@@ -43,7 +44,6 @@ def create_bribe(request):
     })
     
     return render_to_response('bribe/index.html', {'errors':errors, 'charities': charities})
-
 
 def view(request, bribe_id):
     t = loader.get_template('bribe/view.html')
