@@ -50,7 +50,7 @@ def view(request, bribe_id):
 
     bribe = checkBribe(bribe_id)
     donate_url = '%s%s' % ('http://localhost:8080/bribe/donate/', bribe_id)
-    confirm_message = '%s%s%s%s' % ('@', bribe.briber.twitter_handle, ' - I just completed your @tweetbribe. Click here to donate ', donate_url)
+    confirm_message = '%s%s%s%s' % ('@', bribe.briber_twitter_handle, ' - I just completed your @tweetbribe. Click here to donate ', donate_url)
 
     c = Context({
         "bribe": bribe,
