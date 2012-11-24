@@ -15,8 +15,10 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', 'web.views.home.index'),
-    url(r'^another/$', 'web.views.home.another'),
+    url(r'^$', 'web.views.bribe.index'),
     url(r'^bribe/$', 'web.views.bribe.index'),
-    url(r'', include('social_auth.urls')),
+    url(r'^bribe/view/(.*)', 'web.views.bribe.view'),
+    url(r'^bribe/track/(.*)', 'web.views.bribe.track'),
+    url(r'^bribe/confirm/(.*)', 'web.views.bribe.confirm'),
+    url(r'^bribe/donate/(.*)', 'web.views.bribe.donate'),
 )

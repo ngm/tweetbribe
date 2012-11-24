@@ -1,0 +1,12 @@
+<h1>Send up the bribe</h1>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+<p><b>Briber Name</b>: {{bribe.briber.twitter_handle}}</p>
+<p><b>Bribee Name</b>: {{bribe.bribee.twitter_handle}}</p>
+<p><b>Message</b>: {{bribe.message}}</p>
+<p><b>Charity</b>: {{bribe.charity.name}}</p>
+
+
+<a href="/bribe/track/{{bribe.id}}">Click to Tweet!</a>
+
+<a href="/bribe/confirm/{{bribe.id}}">Click to Tell {{bribe.briber.twitter_handle}} you did the tweet!</a>
