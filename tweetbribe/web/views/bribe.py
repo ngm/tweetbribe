@@ -17,11 +17,11 @@ def index(request):
 @csrf_exempt
 def create_bribe(request):
     errors = []
-    if not request.POST.get('bribe_bribee_twitter'):
+    if not request.POST.get('bribe_bribee_twitter_handle'):
         errors.append('Please enter a twitter handle for the person you are bribing!')
-    if not request.POST.get('bribe_briber_twitter'):
+    if not request.POST.get('bribe_briber_twitter_handle'):
         errors.append('Please enter your twitter handle!')
-    if not request.POST.get('bribe_text'):
+    if not request.POST.get('bribe_message'):
         errors.append('Please enter some bribe text!')
     if not request.POST.get('bribe_charity_id'):
         errors.append('Please select a charity!')
@@ -35,6 +35,7 @@ def create_bribe(request):
         bribe.message = request.POST.get('bribe_message')
 
         bribe.save()
+        return render_to_response('bribe/success.html', {})
 
     charities = Charity.objects.all()
     c = Context({
@@ -42,6 +43,7 @@ def create_bribe(request):
     })
     
     return render_to_response('bribe/index.html', {'errors':errors, 'charities': charities})
+
 
 def view(request, bribe_id):
     t = loader.get_template('bribe/view.html')
