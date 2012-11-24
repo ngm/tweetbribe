@@ -9,6 +9,11 @@ def index(request):
     t = loader.get_template('bribe/index.html')
 
     charities = Charity.objects.all()
+
+    for charity in charities:
+        if not charity.logo_url or charity.logo_url.strip() == "":
+            charity.logo_url = '/static/images/charity_placeholder.png'
+
     c = Context({
         "charities":charities
     })

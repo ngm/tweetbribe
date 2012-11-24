@@ -1,44 +1,59 @@
-<h1>Bribery for Good</h1>
+{% extends 'base.html' %}
+{% block title %}Bribery for Good{% endblock %}
 
-<p>Bribe your friends with a &pound;5 donation to
-    one of the charities below to tweet whatever
-    you want... naughty or nice... ;)
-</p>
+{% block content %}
 
-<ul>
-{% for error in errors %}
-<li>
-    {{error}}
-</li>
-{% endfor %}
+    <div id="subheader">
+    </div>
 
-<form method="post" action="/bribe/create_bribe/">
-<p>input your twitter handle</p>
-<input type="text" name="bribe_briber_twitter_handle" />
+	<p class="header_message">
+		Bribe your friends with a £10 donation to one of the charities below to tweet whatever you want... naughty or nice... ;)
+	</p>
 
-<p>
-    Who do you want to bribe?  Insert their 
-    Twitter name here.
-</p>
-<input type="text" name="bribe_bribee_twitter_handle" />
+	<ul>
+	{% for error in errors %}
+	<li>
+	    {{error}}
+	</li>
+	{% endfor %}
+	</ul>
 
-<p>What do you want to bribe them to say?<p>
-<textarea name="bribe_message">
-</textarea>
+	<form method="post" action="/bribe/create_bribe/">
+	<p>input your twitter handle</p>
+	
+	<div class="twitter_name">
+		<div class="at">@</div>
+		<input type="text" name="bribe_briber_twitter_handle" />
+	</div>
+	<p>
+	    Who do you want to bribe?  Insert their 
+	    Twitter name here.
+	</p>
 
-<h2>Select the charity you would like to send to</h2>
+	<div class="twitter_name">
+		<div class="at">@</div>
+		<input type="text" name="bribe_bribee_twitter_handle" />
+	</div>
 
-<ul>
-{% for charity in charities %}
-<li>
-    <input type="radio" name="bribe_charity_id" value="{{charity.id}}" />
-    <p>{{charity.name}}</p>
-    <p>{{charity.description}}</p>
+	<p>What do you want to bribe them to say?<p>
+	<textarea name="bribe_message"></textarea>
 
-    <img src="{{charity.logo_url}}" />
-</li>
-{% endfor %}
-</ul>
+	<h2>Select the charity you would like to send to</h2>
 
-<button value="">Tweet your bribe!</button>
-</form>
+	<ul class="charity_picker">
+	{% for charity in charities %}
+	<li>
+        <label> 
+	    <input type="radio" name="bribe_charity_id" value="{{charity.id}}" />
+	    <img src="{{charity.logo_url}}" />
+	    <p>{{charity.name}}</p>
+		</label>
+	</li>
+	{% endfor %}
+	</ul>
+
+	<button value="">Tweet your bribe!</button>
+	</form>
+
+
+{% endblock %}

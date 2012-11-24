@@ -1,11 +1,16 @@
-<h1>Now tweet your friend...</h1>
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+{% extends 'base.html' %}
+{% block title %}Now tweet your friend...{% endblock %}
 
-<p><b>Briber Name</b>: {{bribe.briber_twitter_handle}}</p>
-<p><b>Bribee Name</b>: {{bribe.bribee_twitter_handle}}</p>
-<p><b>Message</b>: {{bribe.message}}</p>
-<p><b>Charity</b>: {{bribe.charity.name}}</p>
+{% block content %}
 
-<a href="https://twitter.com/intent/tweet?text=A tweet bribe for you... Click here to see: {{bribe_url}}&amp;related=twitterapi">Tweet this!</a>
+	<p><b>Briber Name</b>: {{bribe.briber_twitter_handle}}</p>
+	<p><b>Bribee Name</b>: {{bribe.bribee_twitter_handle}}</p>
+	<p><b>Message</b>: {{bribe.message}}</p>
+	<p><b>Charity</b>: {{bribe.charity.name}}</p>
 
-<a href="https://twitter.com/intent/tweet?text={{confirm_message}}&amp;related=twitterapi">Let {{bribe.briber_twitter_handle}} know</a>
+	<a href="https://twitter.com/intent/tweet?text=A tweet bribe for you... Click here to see: {{bribe_url}}&amp;related=twitterapi">Tweet this!</a>
+
+	<a href="https://twitter.com/intent/tweet?text={{confirm_message}}&amp;related=twitterapi">Let {{bribe.briber_twitter_handle}} know</a>
+
+
+{% endblock %}
