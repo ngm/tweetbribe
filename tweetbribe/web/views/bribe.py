@@ -1,20 +1,47 @@
-from django.template import Context, loader
+from django.template import Context, loader, RequestContext
 from django.http import HttpResponse
 from web.models import Charity, Bribe
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render_to_response
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def index(request):
     t = loader.get_template('bribe/index.html')
 
-    charities = []
-    charities.append(Charity(name="Unicef", description="Cool dudes", givinglab_id="asdf", logo_url="http://asdf.com"))
-    charities.append(Charity(name="Another", description="Cool dudes", givinglab_id="asdf", logo_url="http://asdf.com"))
-
+    charities = Charity.objects.all()
     c = Context({
         "charities":charities
     })
     return HttpResponse(t.render(c))
 
+@csrf_exempt
+def create_bribe(request):
+    errors = []
+    if not request.POST.get('bribe_bribee_twitter'):
+        errors.append('Please enter a twitter handle for the person you are bribing!')
+    if not request.POST.get('bribe_briber_twitter'):
+        errors.append('Please enter your twitter handle!')
+    if not request.POST.get('bribe_text'):
+        errors.append('Please enter some bribe text!')
+    if not request.POST.get('bribe_charity_id'):
+        errors.append('Please select a charity!')
+
+    if len(errors) == 0:
+        charity = Charity.objects.get(id=request.POST.get('bribe_charity_id'))
+        bribe = Bribe()
+        bribe.charity = charity
+        bribe.briber_twitter_handle = request.POST.get('bribe_briber_twitter_handle')
+        bribe.bribee_twitter_handle = request.POST.get('bribe_bribee_twitter_handle')
+        bribe.message = request.POST.get('bribe_message')
+
+        bribe.save()
+
+    charities = Charity.objects.all()
+    c = Context({
+        "charities":charities
+    })
+    
+    return render_to_response('bribe/index.html', {'errors':errors, 'charities': charities})
 
 def view(request, bribe_id):
     t = loader.get_template('bribe/view.html')

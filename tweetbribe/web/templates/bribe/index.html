@@ -1,23 +1,44 @@
+<h1>Bribery for Good</h1>
 
-<h1>Set up the bribe</h1>
+<p>Bribe your friends with a &pound;5 donation to
+    one of the charities below to tweet whatever
+    you want... naughty or nice... ;)
+</p>
 
-<h2>Who do you want to bribe?</h2>
-<input type="text"></input>
+<ul>
+{% for error in errors %}
+<li>
+    {{error}}
+</li>
+{% endfor %}
 
-<h2>What do you want to bribe them to say?</h2>
-<textarea>
+<form method="post" action="/bribe/create_bribe/">
+<p>input your twitter handle</p>
+<input type="text" name="bribe_briber_twitter_handle" />
+
+<p>
+    Who do you want to bribe?  Insert their 
+    Twitter name here.
+</p>
+<input type="text" name="bribe_bribee_twitter_handle" />
+
+<p>What do you want to bribe them to say?<p>
+<textarea name="bribe_message">
 </textarea>
 
 <h2>Select the charity you would like to send to</h2>
-<ul>
 
-    {% for charity in charities %}
+<ul>
+{% for charity in charities %}
 <li>
+    <input type="radio" name="bribe_charity_id" value="{{charity.id}}" />
     <p>{{charity.name}}</p>
     <p>{{charity.description}}</p>
 
     <img src="{{charity.logo_url}}" />
 </li>
-    {% endfor %}
-
+{% endfor %}
 </ul>
+
+<button value="">Tweet your bribe!</button>
+</form>

@@ -12,6 +12,8 @@ class Charity(models.Model):
 
 class Bribe(models.Model):
     message = models.CharField(max_length=200)
-    briber = models.ForeignKey(User, related_name='briber')
-    bribee = models.ForeignKey(User, related_name='bribee')
+#    briber = models.ForeignKey(User, related_name='briber')
+#    bribee = models.ForeignKey(User, related_name='bribee')
+    briber_twitter_handle = models.CharField(max_length=100)
+    bribee_twitter_handle = models.CharField(max_length=100)
     charity = models.ForeignKey(Charity, related_name='charity')
