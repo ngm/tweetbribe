@@ -49,30 +49,14 @@ def view(request, bribe_id):
     t = loader.get_template('bribe/view.html')
 
     bribe = checkBribe(bribe_id)
+    donate_url = '%s%s' % ('http://localhost:8080/bribe/donate/', bribe_id)
+    confirm_message = '%s%s%s%s' % ('@', bribe.briber.twitter_handle, ' - I just completed your @tweetbribe. Click here to donate ', donate_url)
 
     c = Context({
-        "bribe": bribe
+        "bribe": bribe,
+        "confirm_message": confirm_message
     })
     return HttpResponse(t.render(c))
-
-
-
-def track(request, bribe_id):
-
-    bribe = checkBribe(bribe_id)
-
-    return redirect('%s%s%s' % ('https://twitter.com/intent/tweet?text=', bribe.message, '&source=tweetbribe'))
-
-
-def confirm(request, bribe_id):
-
-    donate_url = '%s%s' % ('http://localhost:8080/bribe/donate/', bribe_id)
-
-    bribe = checkBribe(bribe_id)
-
-    return redirect('%s%s%s%s%s' % ('https://twitter.com/intent/tweet?text=@', bribe.briber.twitter_handle, ' - I just completed your @tweetbribe. Click here to donate ', donate_url, '&source=tweetbribe'))
-
-
 
 
 def donate(request, bribe_id):

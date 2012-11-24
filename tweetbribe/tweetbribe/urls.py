@@ -19,7 +19,5 @@ urlpatterns = patterns('',
     url(r'^bribe/$', 'web.views.bribe.index'),
     url(r'^bribe/create_bribe/', 'web.views.bribe.create_bribe'),
     url(r'^bribe/view/(.*)', 'web.views.bribe.view'),
-    url(r'^bribe/track/(.*)', 'web.views.bribe.track'),
-    url(r'^bribe/confirm/(.*)', 'web.views.bribe.confirm'),
     url(r'^bribe/donate/(.*)', 'web.views.bribe.donate'),
 )
