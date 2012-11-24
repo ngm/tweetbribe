@@ -9,5 +9,15 @@
 </textarea>
 
 <h2>Select the charity you would like to send to</h2>
+<ul>
 
+    {% for charity in charities %}
+<li>
+    <p>{{charity.name}}</p>
+    <p>{{charity.description}}</p>
 
+    <img src="{{charity.logo_url}}" />
+</li>
+    {% endfor %}
+
+</ul>

@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
     'web',
+    'social_auth',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -151,3 +152,17 @@ LOGGING = {
         },
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.twitter.TwitterBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+TWITTER_CONSUMER_KEY         = '5C1Eq1kZbuUQLTybob5VYw'
+TWITTER_CONSUMER_SECRET      = 'qoNMZE9pcaFIetryD9vierV2GC0VhemNNVLdP3jKSBs'
+
+LOGIN_URL          = '/login-form/'
+LOGIN_REDIRECT_URL = '/logged-in/'
+LOGIN_ERROR_URL    = '/login-error/'
+
+
