@@ -12,6 +12,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+DATABASES = {}
 DATABASES['default'] = dj_database_url.config()
 
 #DATABASES = {
