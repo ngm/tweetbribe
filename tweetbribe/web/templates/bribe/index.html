@@ -10,13 +10,15 @@
 		Bribe your friends with a £10 donation to one of the charities below to tweet whatever you want... naughty or nice... ;)
 	</p>
 
-	<ul>
-	{% for error in errors %}
-	<li>
-	    {{error}}
-	</li>
-	{% endfor %}
-	</ul>
+	{% if errors %}
+		<ul id="errors">
+		{% for error in errors %}
+		<li>
+		    {{error}}
+		</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
 
 	<form method="post" action="/bribe/create_bribe/">
 	<p>input your twitter handle</p>
@@ -45,7 +47,7 @@
 	<li>
         <label> 
 	    <input type="radio" name="bribe_charity_id" value="{{charity.id}}" />
-	    <img src="{{charity.logo_url}}" />
+	    <img src="{{charity.logo_url}}" width="68px" height="68px" />
 	    <p>{{charity.name}}</p>
 		</label>
 	</li>
