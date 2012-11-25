@@ -1,7 +1,7 @@
 # Django settings for tweetbribe project.
 import dj_database_url
 
-from tweetbribe.local_settings import DATABASE_NAME
+#from tweetbribe.local_settings import DATABASE_NAME
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
