@@ -1,1 +1,1 @@
-web: python project/manage.py runserver 0.0.0.0
+web: python tweetbribe/manage.py runserver 0.0.0.0
