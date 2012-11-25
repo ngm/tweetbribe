@@ -103,6 +103,18 @@ def view(request, bribe_id):
     return HttpResponse(t.render(c))
 
 
+def thanks(request, bribe_id):
+    t = loader.get_template('bribe/thanks.html')
+
+    bribe = checkBribe(bribe_id)
+    
+    c = Context({
+        "bribe": bribe,
+
+    })
+    return HttpResponse(t.render(c))
+
+
 def donate(request, bribe_id):
 
     t = loader.get_template('bribe/donate.html')
