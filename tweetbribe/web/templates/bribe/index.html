@@ -7,7 +7,7 @@
     </div>
 
 	<p class="header_message">
-		Bribe your friends with a £1 donation to one of the charities below to tweet whatever you want... naughty or nice... ;)
+		Bribe friends or celebrities with a £1 charity donation to tweet whatever you want... naughty or nice... ;)
 	</p>
 
 	{% if errors %}
@@ -21,15 +21,14 @@
 	{% endif %}
 
 	<form method="post" action="/bribe/create_bribe/">
-	<p>input your twitter handle</p>
+	<p>First, tell us your twitter name</p>
 	
 	<div class="twitter_name">
 		<div class="at">@</div>
 		<input type="text" name="bribe_briber_twitter_handle" value="{{briber}}"/>
 	</div>
 	<p>
-	    Who do you want to bribe?  Insert their 
-	    Twitter name here.
+	    Next, the twitter name of your bribee
 	</p>
 
 	<div class="twitter_name">
@@ -40,7 +39,7 @@
 	<p>What do you want to bribe them to say?<p>
 	<textarea name="bribe_message"></textarea>
 
-	<h2>Select the charity you would like to send to</h2>
+	<h2>Select the charity you'd like to donate to</h2>
 
 	<ul class="charity_picker">
 	{% for charity in charities %}
@@ -54,7 +53,7 @@
 	{% endfor %}
 	</ul>
 
-	<button class="sentTweetButton stageOne" value="">Tweet your bribe!</button>
+	<button class="sentTweetButton stageOne" value="">Tweet your bribe</button>
 	</form>
 
 	<div id="footer">
