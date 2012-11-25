@@ -12,9 +12,16 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config()
-
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'd9ipttlb829urf',
+    'HOST': 'ec2-54-243-235-169.compute-1.amazonaws.com',
+    'PORT': 5432,
+    'USER': 'gsqikyfghqjexr',
+    'PASSWORD': 'Wac0VumQjV2WL9BEFShURhG9Hw'
+  }
+}
 #DATABASES = {
     #'default': {
         #'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
