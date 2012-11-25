@@ -7,17 +7,17 @@
     <div id="subheader">
     </div>
 
-	<p>Hey! <a href="http://www.twitter.com/{{bribe.briber_twitter_handle}}">@{{bribe.briber_twitter_handle}}</a> would like to set you a bribe, complete it and <a href="http://www.twitter.com/{{bribe.briber_twitter_handle}}">@{{bribe.briber_twitter_handle}}</a> will send {{bribe.charity.name}} £1. (No pressure)<br /></p>
+	<p>Hey! <a href="http://www.twitter.com/{{bribe.briber_twitter_handle}}">@{{bribe.briber_twitter_handle}}</a> has offered you a bribe, complete it and <a href="http://www.twitter.com/{{bribe.briber_twitter_handle}}">@{{bribe.briber_twitter_handle}}</a> will send {{bribe.charity.name}} £1. (No pressure (honest (honest honest)))<br /></p>
 
 	<div id="task">
-		<b>Tweet this message (If you choose to accept):</b><br /><br /> {{bribe.message}}
+		<b>Tweet this message to make the world a better place:</b><br /><br /> {{bribe.message}}
 	</div>
-	<a class="sentTweetButton stageOne" href="https://twitter.com/intent/tweet?text={{bribe.message}}">1. Complete the task!</a>
+	<a class="sentTweetButton stageOne" href="https://twitter.com/intent/tweet?text={{bribe.message}}">1. Tweet now</a>
 
-	<a class="sentTweetButton disable stageTwo" href="https://twitter.com/intent/tweet?text={{confirm_message}}">2. Let @{{bribe.briber_twitter_handle}} know you completed the task</a>
+	<a class="sentTweetButton disable stageTwo" href="https://twitter.com/intent/tweet?text={{confirm_message}}">2. Tell @{{bribe.briber_twitter_handle}} to pay up now</a>
 
-	<p id="hidden_success" class="hidden"><br /><br />{{bribe.charity.name}} and TweetBribe would like to say a big thank you for completing the bribe! <br /><br />
-		Why not set <a href="/bribe/{{bribe.bribee_twitter_handle}}/{{bribe.briber_twitter_handle}}">@{{bribe.briber_twitter_handle}}</a> a bribe in return?
+	<p id="hidden_success" class="hidden"><br /><br />Amazing! Big thanks from TweetBribe and {{bribe.charity.name}}.  <br /><br />
+		Want to bribe back? <a href="/bribe/{{bribe.bribee_twitter_handle}}/{{bribe.briber_twitter_handle}}">Send a bribe to @{{bribe.briber_twitter_handle}}</a>
 	</p>
 
 {% endblock %}
