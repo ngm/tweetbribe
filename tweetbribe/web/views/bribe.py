@@ -14,7 +14,7 @@ def setup(request):
     Charity.objects.all().delete()
 
     charities = []
-    charities.append(Charity(name='British Heart Foundation', description='', givinglab_id='3eb39186-e8a6-4495-ba38-588409080124', logo_url='bhf_logo.jpg'))
+    charities.append(Charity(name='British Heart Foundation', description='', givinglab_id='3eb39186-e8a6-4495-ba38-588409080124', logo_url='/static/logos/bhf_logo.jpg'))
     charities.append(Charity(name='Stroke Association', description='', givinglab_id='833422b4-f47d-4511-b5fb-eacb33c59c16', logo_url='/static/logos/strokeassoc.jpg'))
     charities.append(Charity(name='Academy Fm Folkestone', description='', givinglab_id='479a5f6c-3885-48be-ad94-007998942d82', logo_url='/static/logos/academy_fm_folkestone.jpg'))
     charities.append(Charity(name='Multiple Sclerosis Society', description='', givinglab_id='149a4a4a-7c0d-4ac1-93f4-21038bdf8398', logo_url='/static/logos/mssoc.jpeg'))
