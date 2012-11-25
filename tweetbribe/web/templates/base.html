@@ -45,7 +45,7 @@
 		<style>
 
 			a {
-				color: #012f41;
+				color: #fff200;
 			}
 
 			p {
@@ -153,11 +153,11 @@
 				margin: 40px 0 0 0;
 				width: 560px;
 				float: left;
-				background: gray;
+				background: white;
 				padding: 20px;
 				font-size: 24px;
 				text-align: center;
-				color: #fff;
+				color: gray;
 			}
 
 			.sentTweetButton.done {
@@ -204,8 +204,9 @@
 				}
 
 			#footer {
+				margin: 100px 0 0 0;
 				float: left;
-				height: 400px;
+				height: 100px;
 			}
 		</style>
     </head>
@@ -218,6 +219,9 @@
 	        {% block content %}
 
 	        {% endblock %}
+		<div id="footer">
+			TweetBribe was created by <a href="http://www.twitter.com/spirals">@spirals</a>, <a href="http://www.twitter.com/RochelleDancel">@RochelleDancel</a>, <a href="http://www.twitter.com/markdessain">@markdessain</a> and <a href="http://www.twitter.com/spameldoon">@spameldoon</a>
+		</div>
 	    </div>
     </body>
 </html>
