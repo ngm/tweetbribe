@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from web.models import Charity, Bribe
 from django.shortcuts import redirect, render_to_response
 from django.views.decorators.csrf import csrf_exempt
-
+import urllib2
+import json 
 
 #URL = 'localhost:8080'
-URL = 'http://blooming-bayou-1208.herokuapp.com'
+URL = 'http://www.tweetbribe.com'
 
 def setup(request):
 
@@ -129,3 +130,22 @@ def addDefaultImage(charities):
             charity.logo_url = '/static/images/charity_placeholder.png'
 
     return charities
+
+
+def bitlyurl(long_url):
+
+
+    try:
+        data = urllib2.urlopen('https://api-ssl.bitly.com/v3/shorten?access_token=bfd00e2e1bd539db7f87ee2bd3f1febdc186fbc5&longUrl=' + long_url).read()
+
+        data = json.loads(data)
+        print data, 'sdf',
+
+    except urllib2.HTTPError, e:
+        print "HTTP error: %d" % e.code
+    except urllib2.URLError, e:
+        print "Network error: %s" % e.reason.args[1]
+
+
+
+
