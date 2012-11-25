@@ -16,8 +16,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^$', 'web.views.bribe.index'),
-    url(r'^bribe/$', 'web.views.bribe.index'),
     url(r'^bribe/create_bribe/', 'web.views.bribe.create_bribe'),
     url(r'^bribe/view/(.*)', 'web.views.bribe.view'),
     url(r'^bribe/donate/(.*)', 'web.views.bribe.donate'),
+    url(r'^bribe/(.*)/(.*)', 'web.views.bribe.index'),
+    url(r'^setup', 'web.views.bribe.setup'),
 )

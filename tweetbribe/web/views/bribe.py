@@ -4,13 +4,42 @@ from web.models import Charity, Bribe
 from django.shortcuts import redirect, render_to_response
 from django.views.decorators.csrf import csrf_exempt
 
+def setup(request):
+
+    Charity.objects.all().delete()
+
+    charities = []
+    charities.append(Charity(name='British Heart Foundation', description='', givinglab_id='3eb39186-e8a6-4495-ba38-588409080124', logo_url=''))
+    charities.append(Charity(name='Stroke Association', description='', givinglab_id='833422b4-f47d-4511-b5fb-eacb33c59c16', logo_url='/static/logos/strokeassoc.jpg'))
+    charities.append(Charity(name='Academy Fm Folkestone', description='', givinglab_id='479a5f6c-3885-48be-ad94-007998942d82', logo_url='/static/logos/academy_fm_folkestone.jpg'))
+    charities.append(Charity(name='Multiple Sclerosis Society', description='', givinglab_id='149a4a4a-7c0d-4ac1-93f4-21038bdf8398', logo_url='/static/logos/mssoc.jpeg'))
+   
+    charities.append(Charity(name='Cancer Buddies Network', description='', givinglab_id='511a32f-b18e-4dfc-9134-aac25c2f0a9b', logo_url='/static/logos/cancerbuddiesnetwork.jpg'))
+    charities.append(Charity(name='Cancer Recovery Foundation Uk', description='', givinglab_id='a7f94cd9-b0d7-444a-bfab-c24e5ce4b7ad', logo_url='/static/logos/cancer_recovery_trust.jpg'))
+    charities.append(Charity(name='Action For Children', description='', givinglab_id='3e4e9efa-951a-4fa0-8390-47ec999dd8ca', logo_url='/static/logos/action_for_children.jpg'))
+    
+    for charity in charities:
+        charity.save()
+
 @csrf_exempt
-def index(request):
+def index(request, *args):
+    print args
+    if len(args) == 2:
+        briber, bribee = args
+    else:
+        bribee = ''
+        briber = ''
     t = loader.get_template('bribe/index.html')
 
-    charities = Charity.objects.all()
+    charities = addDefaultImage(Charity.objects.all())
+
+
+    print bribee, briber
+
     c = Context({
-        "charities":charities
+        "charities":charities,
+        "bribee":bribee,
+        "briber":briber
     })
     return HttpResponse(t.render(c))
 
@@ -26,6 +55,11 @@ def create_bribe(request):
     if not request.POST.get('bribe_charity_id'):
         errors.append('Please select a charity!')
 
+
+
+    briber = request.POST.get('bribe_briber_twitter_handle')
+    bribee = request.POST.get('bribe_bribee_twitter_handle')
+
     if len(errors) == 0:
         charity = Charity.objects.get(id=request.POST.get('bribe_charity_id'))
         bribe = Bribe()
@@ -38,9 +72,11 @@ def create_bribe(request):
         bribe_url = '%s%s' % ('http://localhost:8080/bribe/view/', bribe.id)
         return render_to_response('bribe/success.html', {'bribe':bribe, 'bribe_url':bribe_url})
 
-    charities = Charity.objects.all()
+    charities = addDefaultImage(Charity.objects.all())
     c = Context({
-        "charities":charities
+        "charities":charities,
+        "bribee":bribee,
+        "briber":briber
     })
     
     return render_to_response('bribe/index.html', {'errors':errors, 'charities': charities})
@@ -62,8 +98,10 @@ def view(request, bribe_id):
 def donate(request, bribe_id):
 
     t = loader.get_template('bribe/donate.html')
+    bribe = checkBribe(bribe_id)
 
     c = Context({
+        "bribe": bribe,
     })
     return HttpResponse(t.render(c))
 
@@ -80,3 +118,10 @@ def checkBribe(bribe_id):
         return False
 
     return bribe
+
+def addDefaultImage(charities):
+    for charity in charities:
+        if not charity.logo_url or charity.logo_url.strip() == "":
+            charity.logo_url = '/static/images/charity_placeholder.png'
+
+    return charities

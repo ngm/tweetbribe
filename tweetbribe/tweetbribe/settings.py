@@ -1,5 +1,5 @@
 # Django settings for tweetbribe project.
-import dj_database_url
+#import dj_database_url
 
 #from tweetbribe.local_settings import DATABASE_NAME
 
