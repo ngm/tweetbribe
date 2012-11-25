@@ -4,6 +4,10 @@ from web.models import Charity, Bribe
 from django.shortcuts import redirect, render_to_response
 from django.views.decorators.csrf import csrf_exempt
 
+
+#URL = 'localhost:8080'
+URL = 'http://blooming-bayou-1208.herokuapp.com'
+
 def setup(request):
 
     Charity.objects.all().delete()
@@ -69,7 +73,7 @@ def create_bribe(request):
         bribe.message = request.POST.get('bribe_message')
 
         bribe.save()
-        bribe_url = '%s%s' % ('http://localhost:8080/bribe/view/', bribe.id)
+        bribe_url = '%s%s' % (URL + '/bribe/view/', bribe.id)
         return render_to_response('bribe/success.html', {'bribe':bribe, 'bribe_url':bribe_url})
 
     charities = addDefaultImage(Charity.objects.all())
@@ -85,7 +89,7 @@ def view(request, bribe_id):
     t = loader.get_template('bribe/view.html')
 
     bribe = checkBribe(bribe_id)
-    donate_url = '%s%s' % ('http://localhost:8080/bribe/donate/', bribe_id)
+    donate_url = '%s%s' % (URL + '/bribe/donate/', bribe_id)
     confirm_message = '%s%s%s%s' % ('@', bribe.briber_twitter_handle, ' - I just completed your @tweetbribe. Click here to donate ', donate_url)
 
     c = Context({
