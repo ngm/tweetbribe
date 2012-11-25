@@ -23,7 +23,7 @@
 	
 	<div class="twitter_name">
 		<div class="at">@</div>
-		<input type="text" name="bribe_briber_twitter_handle" />
+		<input type="text" name="bribe_briber_twitter_handle" value="{{briber}}"/>
 	</div>
 	<p>
 	    Who do you want to bribe?  Insert their 
@@ -32,7 +32,7 @@
 
 	<div class="twitter_name">
 		<div class="at">@</div>
-		<input type="text" name="bribe_bribee_twitter_handle" />
+		<input type="text" name="bribe_bribee_twitter_handle" value="{{bribee}}"/>
 	</div>
 
 	<p>What do you want to bribe them to say?<p>
@@ -52,7 +52,7 @@
 	{% endfor %}
 	</ul>
 
-	<button value="">Tweet your bribe!</button>
+	<button class="sentTweetButton stageOne" value="">Tweet your bribe!</button>
 	</form>
 
 

@@ -1,18 +1,23 @@
+
 {% extends 'base.html' %}
-{% block title %}Send up the bribe{% endblock %}
+{% block title %}Now tweet your friend...{% endblock %}
 
 {% block content %}
 
-	<p><b>Briber Name</b>: {{bribe.briber_twitter_handle}}</p>
-	<p><b>Bribee Name</b>: {{bribe.bribee_twitter_handle}}</p>
-	<p><b>Message</b>: {{bribe.message}}</p>
-	<p><b>Charity</b>: {{bribe.charity.name}}</p>
+    <div id="subheader">
+    </div>
 
+	<p>Hey! <a href="http://www.twitter.com/{{bribe.briber_twitter_handle}}">@{{bribe.briber_twitter_handle}}</a> would like to set you a bribe, complete it and <a href="http://www.twitter.com/{{bribe.briber_twitter_handle}}">@{{bribe.briber_twitter_handle}}</a> will send {{bribe.charity.name}} £10. (No pressure)<br /></p>
 
-	<a href="https://twitter.com/intent/tweet?text={{bribe.message}}&amp;related=twitterapi">Tweet this!</a>
+	<div id="task">
+		<b>Your Task (If you choose to accept):</b><br /><br /> {{bribe.message}}
+	</div>
+	<a class="sentTweetButton stageOne" href="https://twitter.com/intent/tweet?text={{bribe.message}}&amp;related=twitterapi">1. Complete the task!</a>
 
-	<a href="https://twitter.com/intent/tweet?text={{confirm_message}}&amp;related=twitterapi">Let {{bribe.briber_twitter_handle}} know</a>
+	<a class="sentTweetButton disable stageTwo" href="https://twitter.com/intent/tweet?text={{confirm_message}}&amp;related=twitterapi">2. Let @{{bribe.briber_twitter_handle}} know you completed the task</a>
 
-
+	<p id="hidden_success" class="hidden"><br /><br />{{bribe.charity.name}} and TweetBribe would like to say a big thank you for completing the bribe! <br /><br />
+		Why not set <a href="/bribe/{{bribe.bribee_twitter_handle}}/{{bribe.briber_twitter_handle}}">@{{bribe.briber_twitter_handle}}</a> a bribe in return?
+	</p>
 
 {% endblock %}
