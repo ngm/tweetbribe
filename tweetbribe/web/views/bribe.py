@@ -22,9 +22,9 @@ def setup(request):
     charities.append(Charity(name='Cancer Buddies Network', description='', givinglab_id='511a32f-b18e-4dfc-9134-aac25c2f0a9b', logo_url='/static/logos/cancerbuddiesnetwork.jpg'))
     charities.append(Charity(name='Cancer Recovery Foundation Uk', description='', givinglab_id='a7f94cd9-b0d7-444a-bfab-c24e5ce4b7ad', logo_url='/static/logos/cancer_recovery_trust.jpg'))
     charities.append(Charity(name='Action For Children', description='', givinglab_id='3e4e9efa-951a-4fa0-8390-47ec999dd8ca', logo_url='/static/logos/action_for_children.jpg'))
-    charities.append(Charity(name='Tree of Hope', description='', givinglab_id='18fb1d04-f657-4792-99df-2fc194565be3', logo_url='/static/logos/tree_of_hope.jpg'))
-    charities.append(Charity(name='Variety Club', description='', givinglab_id='ff6ccd27-c61a-48e5-9b24-4fbb9ca0ac94', logo_url='/static/logos/variety_club.jpg'))
-    charities.append(Charity(name='Global Children Development', description='', givinglab_id='2d2e32e6-a1f7-49ce-9287-125f16a7638a', logo_url='/static/logos/global_childrens_development.jpg'))
+    charities.append(Charity(name='Tree of Hope', description='', givinglab_id='df87e4c6-0697-41f9-aff9-2fbeba0d8a22', logo_url='/static/logos/tree_of_hope.jpg'))
+    charities.append(Charity(name='Variety Club', description='', givinglab_id='59cc8cbd-18d7-496f-852c-4faa58b02f73', logo_url='/static/logos/variety_club.jpg'))
+    charities.append(Charity(name='Global Children Development', description='', givinglab_id='37462ef8-a71e-4b14-92ae-125620302225', logo_url='/static/logos/global_childrens_development.jpg'))
     
     for charity in charities:
         charity.save()
